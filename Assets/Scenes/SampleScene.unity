@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 185277402}
   - component: {fileID: 185277405}
   - component: {fileID: 185277404}
+  - component: {fileID: 185277406}
   m_Layer: 0
   m_Name: Player Right
   m_TagString: Untagged
@@ -411,6 +412,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &185277406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185277401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb3bd428f39e454faeec08c47e568aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  keyUp: 111
+  keyDown: 107
+  moveSpeed: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +532,7 @@ GameObject:
   - component: {fileID: 748922254}
   - component: {fileID: 748922257}
   - component: {fileID: 748922256}
+  - component: {fileID: 748922258}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -651,6 +669,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &748922258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748922253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06de59eb04b05d349b3e99d5bc251e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  moveSpeed: 7
 --- !u!1 &1822365024
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +695,7 @@ GameObject:
   - component: {fileID: 1822365025}
   - component: {fileID: 1822365028}
   - component: {fileID: 1822365027}
+  - component: {fileID: 1822365029}
   m_Layer: 0
   m_Name: Player Left
   m_TagString: Untagged
@@ -809,6 +842,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1822365029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822365024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb3bd428f39e454faeec08c47e568aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  keyUp: 119
+  keyDown: 115
+  moveSpeed: 5
 --- !u!1 &2133179491
 GameObject:
   m_ObjectHideFlags: 0
