@@ -20,6 +20,13 @@ public class BallController : MonoBehaviour
         {
             initDirection = Vector2.right;
         }
+
+        float yDirection = Random.value > 0.5? 1:-1;
+
+        initDirection.y = Random.value * yDirection;
+
         rb.velocity = initDirection * moveSpeed;
+
+        print(initDirection);
     }
 }
