@@ -13,11 +13,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -38,5 +33,7 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity = move * moveSpeed;
+
+        Debug.Log($"{gameObject.name} velocity = {rb.velocity.magnitude}");
     }
 }

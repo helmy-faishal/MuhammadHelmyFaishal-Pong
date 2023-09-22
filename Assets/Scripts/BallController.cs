@@ -6,6 +6,10 @@ public class BallController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 7f;
+    public float minY = 0f;
+    public float maxY = 1f;
+
+    public bool useRandomY = true;
 
     private void Awake()
     {
@@ -15,18 +19,54 @@ public class BallController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 initDirection = Vector2.left;
-        if (Random.value > 0.5)
+        StartGame();
+    }
+
+    void StartGame()
+    {
+        rb.position = Vector2.zero;
+        rb.velocity = Vector2.zero;
+        StartCoroutine(StartMoveCoroutine());
+    }
+
+    IEnumerator StartMoveCoroutine()
+    {
+        // Delay 2 detik sebelum bola bergerak
+        yield return new WaitForSeconds(2);
+
+        Vector2 initDirection = Random.value > 0.5 ? Vector2.right : Vector2.left;
+
+        if (useRandomY)
         {
-            initDirection = Vector2.right;
+            float yDirection = Random.value > 0.5 ? 1 : -1;
+
+            initDirection.y = Random.Range(minY, maxY) * yDirection;
         }
-
-        float yDirection = Random.value > 0.5? 1:-1;
-
-        initDirection.y = Random.value * yDirection;
 
         rb.velocity = initDirection * moveSpeed;
 
-        print(initDirection);
+        Debug.Log($"Initial ball direction = {initDirection}");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Checker"))
+        {
+            string loseSide = collision.gameObject.name;
+
+            Debug.Log($"{loseSide} Lose");
+
+            bool isRightScoring = true;
+
+            if (loseSide == "Right")
+            {
+                isRightScoring = false;
+            }
+            GameManager.instance.AddScore(isRightScoring);
+
+            StartGame();
+        }
+    }
+
+    
 }
