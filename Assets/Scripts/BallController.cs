@@ -19,10 +19,10 @@ public class BallController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartGame();
+        ResetAndStartGame();
     }
 
-    void StartGame()
+    public void ResetAndStartGame()
     {
         rb.position = Vector2.zero;
         rb.velocity = Vector2.zero;
@@ -52,21 +52,30 @@ public class BallController : MonoBehaviour
     {
         if (collision.CompareTag("Checker"))
         {
-            string loseSide = collision.gameObject.name;
-
-            Debug.Log($"{loseSide} Lose");
-
-            bool isRightScoring = true;
-
-            if (loseSide == "Right")
-            {
-                isRightScoring = false;
-            }
-            GameManager.instance.AddScore(isRightScoring);
-
-            StartGame();
+            AddScore(collision.gameObject);
         }
     }
 
-    
+    void AddScore(GameObject checker)
+    {
+        string loseSide = checker.name;
+
+        Debug.Log($"{loseSide} Lose");
+
+        bool isRightScoring = loseSide != "Right";
+
+        GameManager.instance.AddScore(isRightScoring);
+
+        ResetAndStartGame();
+    }
+
+    public void ApplyBuffSpeed(float buffSpeedMultiplier)
+    {
+
+        float oldVelocity = rb.velocity.magnitude;
+        rb.velocity *= buffSpeedMultiplier;
+
+        Debug.Log($"Buff Apllied, Velocity {oldVelocity} --> {rb.velocity.magnitude}");
+    }
+
 }

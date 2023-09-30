@@ -824,6 +824,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &623244870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623244871}
+  m_Layer: 0
+  m_Name: Buff Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &623244871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623244870}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &748922253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,6 +1131,15 @@ MonoBehaviour:
   leftScore: 0
   maxScore: 5
   scoreUI: {fileID: 133595598}
+  buffTypeList:
+  - speed
+  buffPrefabs: {fileID: 1740172765670636755, guid: fc6187f867d5ee042b9a35eba3ebda03, type: 3}
+  buffSpawner: {fileID: 623244871}
+  minSpawnBuffInterval: 1
+  maxSpawnBuffInterval: 5
+  destroyBuffInterval: 3
+  maxBuff: 2
+  numberOfBuff: 0
 --- !u!4 &1042860735
 Transform:
   m_ObjectHideFlags: 0
@@ -1512,3 +1552,4 @@ SceneRoots:
   - {fileID: 958032027}
   - {fileID: 1381737091}
   - {fileID: 1042860735}
+  - {fileID: 623244871}
