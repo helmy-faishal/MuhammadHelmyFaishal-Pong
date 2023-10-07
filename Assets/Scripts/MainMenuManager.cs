@@ -10,12 +10,14 @@ public class MainMenuManager : MonoBehaviour
 
     public Button playButton;
     public Button quitButton;
+    public Button creditButton;
 
     private void Awake()
     {
         menuManager = this;
         playButton.onClick.AddListener(PlayGame);
         quitButton.onClick.AddListener(QuitGame);
+        creditButton.onClick.AddListener(OpenCreditScene);
     }
 
     public void PlayGame()
@@ -27,5 +29,10 @@ public class MainMenuManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void OpenCreditScene()
+    {
+        SceneManager.LoadScene("Credit");
     }
 }

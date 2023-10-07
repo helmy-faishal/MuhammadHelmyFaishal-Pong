@@ -7,6 +7,7 @@ TagManager:
   - Checker
   - Buff
   - Ball
+  - Paddle
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7907646611842905439}
   - component: {fileID: -5998436894247000919}
   m_Layer: 0
-  m_Name: Buff Speed
+  m_Name: Buff
   m_TagString: Buff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,8 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8cea173c9329e044be18828e4751800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultBuffDestroyer: 5
+  buffTime: 5
   buffType: speed
-  buffSpeedMultiplier: 1.5
+  ballSpeedMultiplier: 1.5
+  paddleSpeedMultiplier: 2
+  paddleScaleMultiplier: 2
 --- !u!60 &-5998436894247000919
 PolygonCollider2D:
   m_ObjectHideFlags: 0

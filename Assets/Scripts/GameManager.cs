@@ -10,8 +10,14 @@ public class GameManager : MonoBehaviour
     public int rightScore,leftScore = 0;
     public int maxScore = 5;
     public TMP_Text scoreUI;
+    public Button backButton;
 
-    public List<string> buffTypeList = new List<string>{"speed"};
+    [Header("Buff Settings")]
+    public List<string> buffTypeList = new List<string> { 
+        "ball speed", 
+        "paddle speed", 
+        "paddle scale" 
+    };
 
     public GameObject buffPrefabs;
     public Transform buffSpawner;
@@ -20,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     public float destroyBuffInterval = 3f;
     public int maxBuff = 2;
-    public int  numberOfBuff;
+    public int numberOfBuff = 0;
 
     public static GameManager instance;
 
@@ -28,6 +34,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         SetScoreText();
+        backButton.onClick.AddListener(MoveToMainMenu);
     }
 
     private void Start()
@@ -89,6 +96,7 @@ public class GameManager : MonoBehaviour
         int index = Random.Range(0, buffTypeList.Count);
 
         string buffType = buffTypeList[index];
+        Debug.Log($"Buff type = {buffType}");
         buff.GetComponent<BuffController>().SetBuff(buffType, destroyBuffInterval);
     }
 

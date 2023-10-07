@@ -6,10 +6,11 @@ public class BallController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 7f;
+    public bool useRandomY = true;
     public float minY = 0f;
     public float maxY = 1f;
 
-    public bool useRandomY = true;
+    public GameObject lastHit;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class BallController : MonoBehaviour
     {
         rb.position = Vector2.zero;
         rb.velocity = Vector2.zero;
+        lastHit = null;
         StartCoroutine(StartMoveCoroutine());
     }
 
@@ -46,6 +48,14 @@ public class BallController : MonoBehaviour
         rb.velocity = initDirection * moveSpeed;
 
         Debug.Log($"Initial ball direction = {initDirection}");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Paddle"))
+        {
+            lastHit = collision.gameObject;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

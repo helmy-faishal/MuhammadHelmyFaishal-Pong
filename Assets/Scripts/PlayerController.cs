@@ -9,9 +9,12 @@ public class PlayerController : MonoBehaviour
     public KeyCode keyDown = KeyCode.S;
     public float moveSpeed = 5f;
 
+    Vector3 originalScale;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        originalScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -35,5 +38,40 @@ public class PlayerController : MonoBehaviour
         rb.velocity = move * moveSpeed;
 
         Debug.Log($"{gameObject.name} velocity = {rb.velocity.magnitude}");
+    }
+
+    public void ApplySpeedBuff(float speedMultiplier,float buffTime)
+    {
+        StartCoroutine(SpeedBuffCoroutine(speedMultiplier,buffTime));
+    }
+
+    IEnumerator SpeedBuffCoroutine(float speedMultiplier, float buffTime)
+    {
+        Debug.Log($"Buff speed applied to {gameObject.name}");
+        moveSpeed *= speedMultiplier;
+        yield return new WaitForSeconds(buffTime);
+        moveSpeed /= speedMultiplier;
+        Debug.Log("Buff end!");
+    }
+
+    public void ApplyScaleBuff(float scaleMultiplier, float buffTime)
+    {
+        StartCoroutine(ScaleBuffCoroutine(scaleMultiplier,buffTime));
+    }
+
+    IEnumerator ScaleBuffCoroutine(float scaleMultiplier, float buffTime)
+    {
+        Debug.Log($"Buff scale applied to {gameObject.name}");
+
+        // Buff scale pada Y
+        Vector3 newScale = new Vector3(
+            transform.localScale.x,
+            transform.localScale.y * scaleMultiplier,
+            transform.localScale.z);
+
+        transform.localScale = newScale;
+        yield return new WaitForSeconds(buffTime);
+        transform.localScale = originalScale;
+        Debug.Log("Buff end!");
     }
 }
